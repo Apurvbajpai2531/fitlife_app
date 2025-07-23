@@ -1,0 +1,37 @@
+<%= form_with(model: progress) do |form| %>
+  <% if progress.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(progress.errors.count, "error") %> prohibited this progress from being saved:</h2>
+
+      <ul>
+        <% progress.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :weight, style: "display: block" %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div>
+    <%= form.label :bmi, style: "display: block" %>
+    <%= form.text_field :bmi %>
+  </div>
+
+  <div>
+    <%= form.label :calories_burned, style: "display: block" %>
+    <%= form.number_field :calories_burned %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

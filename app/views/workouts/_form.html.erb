@@ -1,0 +1,45 @@
+<div style="max-width: 600px; margin: 40px auto; background: #f8f9fa; padding: 30px; border-radius: 16px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
+  <h2 style="text-align: center; margin-bottom: 24px; color: #333;">📝 <%= @workout.new_record? ? "Create Workout" : "Edit Workout" %></h2>
+
+  <%= form_with(model: workout, local: true) do |form| %>
+    <% if workout.errors.any? %>
+      <div style="background-color: #ffe6e6; border-left: 5px solid #ff4d4d; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+        <h4 style="margin: 0; color: #cc0000;"><%= pluralize(workout.errors.count, "error") %> prevented this workout from being saved:</h4>
+        <ul style="margin: 10px 0 0 20px; color: #cc0000;">
+          <% workout.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Title -->
+    <div style="margin-bottom: 20px;">
+      <%= form.label :title, "Workout Title", style: "font-weight: 600;" %><br>
+      <%= form.text_field :title, style: "width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc;" %>
+    </div>
+
+    <!-- Description -->
+    <div style="margin-bottom: 20px;">
+      <%= form.label :description, "Workout Description", style: "font-weight: 600;" %><br>
+      <%= form.text_area :description, rows: 3, style: "width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc;" %>
+    </div>
+
+    <!-- Category -->
+    <div style="margin-bottom: 20px;">
+      <%= form.label :category_id, "Category", style: "font-weight: 600;" %><br>
+      <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Select Category" }, style: "width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc;" %>
+    </div>
+
+    <!-- Plan -->
+    <div style="margin-bottom: 20px;">
+      <%= form.label :plan_id, "Plan", style: "font-weight: 600;" %><br>
+      <%= form.collection_select :plan_id, Plan.all, :id, :name, { prompt: "Select Plan" }, style: "width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc;" %>
+    </div>
+
+    <!-- Submit Button -->
+    <div style="text-align: center;">
+      <%= form.submit (workout.new_record? ? "Save Workout" : "Update Workout"), style: "background: #28a745; color: white; padding: 12px 24px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer;" %>
+    </div>
+  <% end %>
+</div>

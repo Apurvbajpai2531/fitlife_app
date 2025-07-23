@@ -1,0 +1,10 @@
+<h2>Your Achievements</h2>
+
+<ul>
+  <% current_user.achievements.each do |achievement| %>
+    <li>
+      🏆 <strong><%= achievement.title %></strong><br>
+      <small><%= achievement.description %></small>
+    </li>
+  <% end %>
+</ul>

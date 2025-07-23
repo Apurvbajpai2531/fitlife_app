@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workout: one
+  user: one
+  scheduled_on: 2025-07-19
+
+two:
+  workout: two
+  user: two
+  scheduled_on: 2025-07-19

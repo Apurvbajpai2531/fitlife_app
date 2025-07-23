@@ -1,0 +1,28 @@
+<div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-indigo-100 via-white to-indigo-50">
+  <div class="text-center text-4xl font-bold text-indigo-600 fade-in mb-6">
+    Welcome to FitLife 💪
+  </div>
+
+  <p class="text-lg text-gray-700 fade-in delay-100 mb-6">
+    Your personalized fitness companion — track workouts, build plans, earn achievements!
+  </p>
+
+  <%= link_to "Get Started", workouts_path, class: "bg-indigo-600 text-white px-6 py-3 rounded-xl text-lg hover:bg-indigo-700 shadow-lg transition" %>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+  <div class="bg-white shadow-xl p-6 rounded-2xl hover:scale-105 transition">
+    <h2 class="text-xl font-semibold text-indigo-700">Total Workouts</h2>
+    <p class="mt-2 text-3xl font-bold"><%= current_user&.workouts&.count || 0 %></p>
+  </div>
+
+  <div class="bg-white shadow-xl p-6 rounded-2xl hover:scale-105 transition">
+    <h2 class="text-xl font-semibold text-indigo-700">Achievements</h2>
+    <p class="mt-2 text-3xl font-bold"><%= current_user&.achievements&.count || 0 %></p>
+  </div>
+
+  <div class="bg-white shadow-xl p-6 rounded-2xl hover:scale-105 transition">
+    <h2 class="text-xl font-semibold text-indigo-700">Workout Plans</h2>
+    <p class="mt-2 text-3xl font-bold"><%= current_user&.plans&.count || 0 %></p>
+  </div>
+</div>

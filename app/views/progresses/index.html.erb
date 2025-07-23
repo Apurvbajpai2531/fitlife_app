@@ -1,0 +1,34 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Progresses" %>
+
+<h1>Progresses</h1>
+
+<div id="progresses">
+  <% @progresses.each do |progress| %>
+    <%= render progress %>
+    <p>
+      <%= link_to "Show this progress", progress %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "➕ New Progress", new_progress_path, class: "btn" %>
+
+<h2>Your Weight Progress</h2>
+
+<div class="fade-in">
+  <%= line_chart current_user.progresses.group_by_day(:created_at).average(:weight),
+      height: "300px",
+      library: {
+        title: { text: "Weight Over Time", x: -20 },
+        yAxis: { title: { text: "Weight (kg)" } },
+        xAxis: { title: { text: "Date" } }
+      } %>
+</div>
+
+<h2>Your Weight Progress</h2>
+
+<div class="fade-in">
+  <%= line_chart current_user.progresses.group_by_day(:created_at).average(:weight), height: "300px", library: { title: { text: "Weight Over Time", x: -20 } } %>
+</div>
